@@ -1,6 +1,7 @@
 namespace Asclepio;
 
-// 1. Tu clase unificada (El contenedor principal)
+// CarneCURP unificado
+//Muchos atributos están inicializados en "cero" para que el compilador no se ponga de mamón. XD
 public class CarneCURP
 {
     public string Curp { get; set; } = string.Empty;
@@ -12,9 +13,11 @@ public class CarneCURP
 
     public Direccion Residencia {get; set;} = new Direccion();
 
-    public int Edad;
+    public int Edad {get; set;}
+    //Estos atributos por si acaso:
+    public long Numtel {get; set;}
+    public string Folio {get; set;} = string.Empty;
 
-    // Método para que tu algoritmo sepa la edad exacta al instante
     public int CalcularEdad()
     {
         var hoy = DateOnly.FromDateTime(DateTime.Now);
@@ -33,10 +36,12 @@ public class CarneCURP
     public List<CitaConsulta> HistorialConsultas { get; set; } = new List<CitaConsulta>();
     public List<RegistroUrgencia> HistorialUrgencias { get; set; } = new List<RegistroUrgencia>();
 
+    //Método constructor vacío por si acaso.
     public CarneCURP()
     { 
     }
-    public CarneCURP(string curp, string nombreCompleto, string tipoSangre, DateOnly fechaNacimiento, Direccion residencia)
+    public CarneCURP(string curp, string nombreCompleto, string tipoSangre, 
+    DateOnly fechaNacimiento, Direccion residencia, long numtel, string folio)
     {
         Curp = curp;
         NombreCompleto = nombreCompleto;
@@ -44,6 +49,8 @@ public class CarneCURP
         FechaNacimiento = fechaNacimiento;
         Residencia = residencia;
         Edad = CalcularEdad();
+        Numtel = numtel;
+        Folio = folio;
         Console.WriteLine("CarneCURP creado.");
         
         // Es vital inicializar las listas vacías en el constructor 
@@ -53,6 +60,7 @@ public class CarneCURP
     }
 }
 
+//CLase aparte para la dirección del paciente:
 public class Direccion
 {
     public string callenumero {get; set;} = "";
@@ -69,10 +77,10 @@ public class CitaConsulta
     public string Consultorio { get; set; } = "";
 }
 
-// 3. Clase para las emergencias (la que usará tu algoritmo de priorización)
+// 3. Clase para las emergencias:
 public class RegistroUrgencia
 {
     public DateTime FechaIngreso { get; set; }
-    public int NivelTriage { get; set; } // Del 1 al 5; 1 = prioridad máxima, 5 = menor prioridad
+    public int NivelTriage { get; set; } // Del 1 al 5; 1 = prioridad máxima, 5 = menor prioridad, tal como en la guía
     public string Sintomas { get; set; } = "";
 }
