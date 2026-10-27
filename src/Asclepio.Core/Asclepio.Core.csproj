@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Librería del motor: sin dependencias externas y sin nada de interfaz.
+       La interfaz de escritorio (WPF/WinForms) la referenciará sin cambiar este proyecto. -->
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>12.0</LangVersion>
+    <RootNamespace>Asclepio.Core</RootNamespace>
+  </PropertyGroup>
+
+</Project>

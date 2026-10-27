@@ -1,0 +1,18 @@
+bin/
+obj/
+.vs/
+*.user
+
+# Configuración local
+.vs/
+*.user
+*.suo
+
+# Compilación
+**/bin/
+**/obj/
+
+# Publicaciones y datos locales
+publicado/
+pacientes.json
+*.bak
